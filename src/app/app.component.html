@@ -6,4 +6,70 @@
 
 </nav>
 
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 mt-4">
+  
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+        
+                <th scope="col">ID Producto</th>
+                <th scope="col">Nombre Producto</th>
+                <th scope="col">Fecha de vencimiento</th>
+                <th scope="col">Descripcion Producto</th>
+                <th scope="col">ID Proveedor</th>
+        
+            </tr>
+            </thead>
 
+            <tbody>
+        
+            <tr *ngFor="let producto of ProductoArray"
+                    (click)= "openProducto(producto)"
+                    [class.active] = "producto == selectedProducto">
+        
+                <th scope="row">{{producto.id}}</th>
+        
+                <td>{{producto.nombre}}</td>
+        
+                <td>{{producto.descripcion}}</td>
+        
+                <td>{{producto.fecha_venci}}</td>
+        
+                <td>{{producto.id_proveedor}}</td>
+        
+            </tr>
+        </tbody>
+        </table>
+
+        <div class="card mt-4">
+          <div class="card-body">
+  
+            <div class="card-title">
+              Inserta un nuevo Producto
+            </div>
+  
+              <div class="form-group">
+                <input type="text" [(ngModel)]="selectedProducto.nombre" placeholder="Inserte un Nombre" class="form-control">
+                <br>
+                <input type="text" [(ngModel)]="selectedProducto.descripcion" placeholder="Inserte una descripcion" class="form-control">
+                <br>
+                <input type="text" [(ngModel)]="selectedProducto.fecha_venci" placeholder="Inserte una fecha" class="form-control">
+                <br>
+                <input type="text" [(ngModel)]="selectedProducto.id_proveedor" placeholder="Inserte un ID de proveedor" class="form-control">
+              </div>
+  
+              <button (click)= "AddoEditProducto()" class="btn btn-primary">
+                  Enviar
+              </button>
+  
+              <button *ngIf = "selectedProducto.id !==0" class="btn btn-danger" (click) = "deleteProducto()">
+                  Eliminar
+              </button>
+  
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -9,24 +9,26 @@ import { Proveedor } from './models/proveedor';
 })
 export class AppComponent {
 
-  ProductoArray: Producto[];
+  ProductoArray: Producto[]= [
+
+    {id: 1, nombre: "Papel Scott", descripcion: "Papel Higienico", fecha_venci: "14/02/2020", id_proveedor: 12 }
+
+  ];
 
   selectedProducto: Producto = new Producto();
 
   //metodo para editar y anadir
   AddoEditProducto()
   {
+    
     if(this.selectedProducto.id == 0)
     {
-      //con esta linea se agrega el id que es autoincrementado
-      this.selectedProducto.id = this.ProductoArray.length + 1 ;
-
-      //se agrega el producto al array
+      this.selectedProducto.id = this.ProductoArray.length + 1;
       this.ProductoArray.push(this.selectedProducto);
+      
     }
 
-      this.selectedProducto = new Producto();
-
+    this.selectedProducto = new Producto();
   }
 
   //metodo para abrir y editar los productos
@@ -40,7 +42,7 @@ export class AppComponent {
   {
     if( confirm('Estas seguro de eliminar este producto?'))
     {
-      this.ProductoArray.filter(x => x != this.selectedProducto);
+      this.ProductoArray = this.ProductoArray.filter(x => x != this.selectedProducto);
       this.selectedProducto = new Producto
     }
   }
@@ -82,7 +84,7 @@ export class AppComponent {
       this.selectedProveedor = new Proveedor;
     }
   }
-  
+
 }
 
 
