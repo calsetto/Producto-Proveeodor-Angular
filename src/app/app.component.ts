@@ -44,6 +44,45 @@ export class AppComponent {
       this.selectedProducto = new Producto
     }
   }
+
+  //--------------------------------------------------------------------------------
+
+  ProveedorArray: Proveedor[];
+
+  selectedProveedor: Proveedor = new Proveedor();
+
+  //metodo para editar y anadir proveedor
+  AddoEditProveedor()
+  {
+    if(this.selectedProveedor.id == 0)
+    {
+      //con esta linea se agrega el id que es autoincrementado
+      this.selectedProveedor.id = this.ProveedorArray.length + 1 ;
+
+      //se agrega el proveedor al array
+      this.ProveedorArray.push(this.selectedProveedor);
+    }
+
+      this.selectedProveedor = new Proveedor();
+
+  }
+
+  //metodo para abrir y editar los proveedores
+  openProveedor(proveedor: Proveedor)
+  {
+    this.selectedProveedor = proveedor;
+  }
+
+  //metodo para eliminar el proveedor
+  deleteProveedor()
+  {
+    if( confirm('Estas seguro de eliminar este proveedor?'))
+    {
+      this.ProveedorArray.filter(x => x != this.selectedProveedor);
+      this.selectedProveedor = new Proveedor;
+    }
+  }
+  
 }
 
 
