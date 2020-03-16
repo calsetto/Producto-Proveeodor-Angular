@@ -1,12 +1,13 @@
-<nav class="navbar navbar-dark bg-primary">
+<nav class="navbar navbar-dark bg-primary" *ngIf = "lol == 1">
 
-    <a class="navbar.brand" style="color: white;" href="/">
-      Productos-Proveedores
+    <a class="navbar.brand" style="color: white;">
+      Productos
     </a>
+    
 
 </nav>
 
-<div class="container">
+<div class="container" *ngIf = "lol == 1">
     <div class="row">
       <div class="col-md-6 mt-4">
   
@@ -69,7 +70,19 @@
               </button>
   
             </div>
+
+            <button  class="btn btn-danger" (click) = "next()">
+              Ir a Proveedores
+          </button>
+
         </div>
       </div>
     </div>
   </div>
+
+  <div *ngIf = "lol !== 1">
+    <app-componente2></app-componente2>
+  </div>
+
+  
+

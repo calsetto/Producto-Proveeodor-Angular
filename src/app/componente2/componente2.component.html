@@ -1,0 +1,80 @@
+<nav class="navbar navbar-dark bg-primary" *ngIf = "lol1 == 1">
+
+    <a class="navbar.brand" style="color: white;">
+      Proveedores
+    </a>
+
+</nav>
+
+<div class="container" *ngIf = "lol1 == 1">
+    <div class="row">
+      <div class="col-md-6 mt-4">
+  
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+        
+                <th scope="col">ID Proveedor</th>
+                <th scope="col">Nombre Proveedor</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Numero de telefono</th>
+        
+            </tr>
+            </thead>
+
+            <tbody>
+        
+            <tr *ngFor="let proveedor of ProveedorArray"
+                    (click)= "openProveedor(proveedor)"
+                    [class.active] = "proveedor == selectedProveedor">
+        
+                <th scope="row">{{proveedor.id}}</th>
+        
+                <td>{{proveedor.nombre}}</td>
+        
+                <td>{{proveedor.direccion}}</td>
+        
+                <td>{{proveedor.telefono}}</td>
+        
+            </tr>
+        </tbody>
+        </table>
+
+        <div class="card mt-4">
+          <div class="card-body">
+  
+            <div class="card-title">
+              Inserta un nuevo Proveedor
+            </div>
+  
+              <div class="form-group">
+                <input type="text" [(ngModel)]="selectedProveedor.nombre" placeholder="Inserte un Nombre" class="form-control">
+                <br>
+                <input type="text" [(ngModel)]="selectedProveedor.direccion" placeholder="Inserte una descripcion" class="form-control">
+                <br>
+                <input type="text" [(ngModel)]="selectedProveedor.telefono" placeholder="Inserte una fecha" class="form-control">
+                <br>
+              </div>
+  
+              <button (click)= "AddoEditProveedor()" class="btn btn-primary">
+                  Enviar
+              </button>
+  
+              <button *ngIf = "selectedProveedor.id !==0" class="btn btn-danger" (click) = "deleteProveedor()">
+                  Eliminar
+              </button>
+  
+            </div>
+
+            <button  class="btn btn-danger" (click) = "next1()">
+              Ir a Productos
+            </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf = "lol1 !== 1">
+    <app-root></app-root>
+  </div>
