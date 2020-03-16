@@ -28,6 +28,14 @@ export class Componente2Component implements OnInit {
 
       //se agrega el proveedor al array
       this.ProveedorArray.push(this.selectedProveedor);
+
+      //se agrega al LOCALSTORAGE
+
+      localStorage.setItem('PROVEEDOR', JSON.stringify(this.ProveedorArray));
+
+      let proveedor = JSON.parse(localStorage.getItem("PROVEEDOR"));
+
+      console.log(proveedor);
     }
 
       this.selectedProveedor = new Proveedor();

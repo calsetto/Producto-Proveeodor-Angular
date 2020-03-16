@@ -10,6 +10,7 @@ import { Proveedor } from './models/proveedor';
 export class AppComponent {
 
   lol:number = 1;
+  
 
   ProductoArray: Producto[]= [
 
@@ -27,6 +28,17 @@ export class AppComponent {
     {
       this.selectedProducto.id = this.ProductoArray.length + 1;
       this.ProductoArray.push(this.selectedProducto);
+
+      //se agrega al LOCALSTORAGE
+
+      localStorage.setItem('PRODUCTO', JSON.stringify(this.ProductoArray));
+
+      let producto = JSON.parse(localStorage.getItem("PRODUCTO"));
+
+      console.log(producto);
+
+
+
       
     }
 
